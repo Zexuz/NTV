@@ -22,6 +22,8 @@ namespace NTV.Runner
             {
                 Console.WriteLine(dankResource.UrlToWebsite);
             }
+
+            Console.ReadLine();
         }
 
 

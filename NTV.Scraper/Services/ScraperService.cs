@@ -16,7 +16,7 @@ namespace NTV.Scraper.Services
         public List<IDankResource> ScrapeReddit()
         {
             var httpExecutor = _httpRequestExecutorService;
-            var redditSite = new Reddit(httpExecutor);
+            var redditSite = new RedditScraper(httpExecutor);
 
             var task = redditSite.GetResourcesFromSite();
             Task.WaitAll(task);

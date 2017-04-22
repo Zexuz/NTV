@@ -1,104 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
 
 namespace NTV.Scraper.Sites.Reddit
 {
-    public class Reddit : ISite
-    {
-        public Uri BaseUri => new Uri("https://www.reddit.com");
-
-        private readonly List<string> _pathsToScrape = new List<string>
-        {
-            "top/",
-            "r/funny/",
-            "top/",
-            "r/funny/",
-            "r/pics/",
-            "r/dankmemes/",
-            "r/videos/",
-            "domain/youtube.com/",
-            "domain/imgur.com/"
-        };
-
-        private readonly List<string> _pathsToAvoid = new List<string>
-        {
-            "r/The_Donald",
-            "r/politics"
-        };
-
-
-        private readonly IHttpRequestExecutor _httpExecutor;
-
-        public Reddit(IHttpRequestExecutor httpExecutor)
-        {
-            _httpExecutor = httpExecutor;
-        }
-
-        public async Task<List<IDankResource>> GetResourcesFromSite()
-        {
-            var list = new List<IDankResource>();
-            foreach (var path in _pathsToScrape)
-            {
-                var uri = new Uri(BaseUri, $"{path}.json?limit=100");
-                Console.WriteLine($"Scraping {uri.AbsolutePath}");
-                var response = await _httpExecutor.GetResponseFromSite(uri);
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new HttpRequestException($"Can't get response from site:{response.Headers.Location.AbsoluteUri}");
-                }
-
-                var dataString = await response.Content.ReadAsStringAsync();
-                list.AddRange(ConvertDataString(dataString));
-            }
-
-            return list;
-        }
-
-        private IEnumerable<IDankResource> ConvertDataString(string dataString)
-        {
-            var rootObject = JsonConvert.DeserializeObject<RootObject>(dataString);
-
-            return rootObject.data.children
-                .Where(child => !child.data.stickied && !ShouldAvoidSubredit(child.data.subreddit_name_prefixed))
-                .Select(child => new RedditResource
-                {
-                    NumberOfComments = child.data.num_comments,
-                    NumberOfLikes = child.data.score,
-                    Uploaded = UnixTimeStampToDateTime((int) child.data.created_utc),
-                    UrlToSource = new Uri(child.data.url),
-                    UrlToWebsite = new Uri($"{BaseUri.GetLeftPart(UriPartial.Authority)}{child.data.permalink}"),
-                    Nsfw = child.data.over_18,
-                    Title = child.data.title
-                })
-                .Cast<IDankResource>()
-                .ToList();
-        }
-
-        private bool ShouldAvoidSubredit(string subredit)
-        {
-            return _pathsToAvoid.Any(path => path.ToLower().Equals(subredit.ToLower()));
-        }
-
-        public new Enums.Sites GetType()
-        {
-            return Enums.Sites.Reddit;
-        }
-
-        public static DateTime UnixTimeStampToDateTime(int unixTimeStamp)
-        {
-            // Unix timestamp is seconds past epoch
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-            return dtDateTime;
-        }
-    }
-
-    #region RedditJsonClass
-
     public class MediaEmbed
     {
     }
@@ -298,11 +201,9 @@ namespace NTV.Scraper.Sites.Reddit
         public object before { get; set; }
     }
 
-    public class RootObject
+    public class RedditJsonObject
     {
         public string kind { get; set; }
         public Data data { get; set; }
     }
-
-    #endregion
 }

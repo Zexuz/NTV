@@ -101,6 +101,7 @@ namespace NTV.Scraper.Sites.Reddit
         private static bool ResourceMatchesCriteria(Child child)
         {
             if (child.data.stickied) return false;
+            if (child.data.score < 500) return false;
             if (child.data.post_hint == "image" || child.data.post_hint == "rich:video") return true;
             if (new Regex(@".+(jpeg|jpg|gif|png|gifv)$").IsMatch(child.data.url)) return true;
 

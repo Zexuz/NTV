@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV", "NTV.Scraper\NTV.Scra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV", "NTV.Runner\NTV.Runner.csproj", "{9E2B11B8-D9F9-4E54-8ADB-5AF21C4AAB7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.Repository", "NTV.Repository\NTV.Repository.csproj", "{1119C1B6-AE00-42BB-97FC-81DEAA637F09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.WebApi.Controller", "NTV.WebApi.Controller\NTV.WebApi.Controller.csproj", "{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{9E2B11B8-D9F9-4E54-8ADB-5AF21C4AAB7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E2B11B8-D9F9-4E54-8ADB-5AF21C4AAB7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E2B11B8-D9F9-4E54-8ADB-5AF21C4AAB7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1119C1B6-AE00-42BB-97FC-81DEAA637F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1119C1B6-AE00-42BB-97FC-81DEAA637F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1119C1B6-AE00-42BB-97FC-81DEAA637F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1119C1B6-AE00-42BB-97FC-81DEAA637F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

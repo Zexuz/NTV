@@ -4,43 +4,16 @@ namespace NTV.Scraper.Sites
 {
     public class RateLimit
     {
-        private readonly TimeSpan _timer;
-        private readonly DateTime _timeWhenStarted;
+        private readonly TimeSpan _scraperDelay;
 
-        public int Remaining => NumberOfPosibleRequest - RequestUsed;
-        public int RequestUsed { get; private set; }
-        public DateTime DateWhenReset { get; private set; }
-        public int NumberOfPosibleRequest { get; }
-
-        public RateLimit(int numberOfPosibleRequest, TimeSpan timer)
+        public RateLimit(TimeSpan scraperDelay)
         {
-            _timer = timer;
-            NumberOfPosibleRequest = numberOfPosibleRequest;
-            _timeWhenStarted = DateTime.Now;
-        }
-
-        public void RequestDone()
-        {
-            if (Remaining == 0) throw new Exception("We can't do this request now or we might get flaged.");
-            if (RequestUsed == 0 && DateWhenReset == DateTime.MinValue)
-            {
-                DateWhenReset = DateTime.Now.AddSeconds(_timer.TotalSeconds);
-            }
-            RequestUsed++;
-        }
-
-        public void Reset()
-        {
-            RequestUsed = 0;
-            DateWhenReset = DateTime.MinValue;
+            _scraperDelay = scraperDelay;
         }
 
         public TimeSpan GetTimeSpanUntillNextScrape()
         {
-            var timeNow = DateTime.Now;
-            var millisecUntillReset = _timer.TotalMilliseconds - (timeNow - _timeWhenStarted).TotalMilliseconds;
-            var millisecUntillNextScrape = millisecUntillReset / Remaining;
-            return TimeSpan.FromMilliseconds(millisecUntillNextScrape);
+            return _scraperDelay;
         }
     }
 }

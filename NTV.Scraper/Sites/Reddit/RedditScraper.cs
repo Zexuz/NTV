@@ -22,7 +22,7 @@ namespace NTV.Scraper.Sites.Reddit
         public RedditScraper(IHttpRequestExecutor httpExecutor)
         {
             _httpExecutor = httpExecutor;
-            RateLimit = new RateLimit(300, TimeSpan.FromSeconds(600));
+            RateLimit = new RateLimit(TimeSpan.FromSeconds(2));
             Navigator = new RedditNavigator();
         }
 
@@ -58,8 +58,6 @@ namespace NTV.Scraper.Sites.Reddit
                 throw new HttpRequestException($"Can't get response from site:{response.Headers.Location.AbsoluteUri}");
             }
 
-            UpdateRateLimit();
-
             var dataString = await response.Content.ReadAsStringAsync();
             return  ConvertDataString(dataString);
         }
@@ -70,10 +68,6 @@ namespace NTV.Scraper.Sites.Reddit
             return Enums.Sites.Reddit;
         }
 
-        private void UpdateRateLimit()
-        {
-            RateLimit.RequestDone();
-        }
 
         private IEnumerable<IDankResource> ConvertDataString(string dataString)
         {

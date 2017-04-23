@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -114,12 +115,17 @@ namespace NTV.Scraper.Sites.Reddit
 
         private static bool ResourceMatchesCriteria(Child child)
         {
+            if (AvoidScrape().Any(path => string.Equals(child.data.subreddit_name_prefixed, path, StringComparison.CurrentCultureIgnoreCase)))
+            {
+                return false;
+            }
+
             if (child.data.stickied) return false;
             if (child.data.score < 500) return false;
             if (child.data.post_hint == "image" || child.data.post_hint == "rich:video") return true;
             if (new Regex(@".+(jpeg|jpg|gif|png|gifv)$").IsMatch(child.data.url)) return true;
 
-            return AvoidScrape().Any(path => path.ToLower().Equals(child.data.subreddit_name_prefixed.ToLower()));
+            return false;
         }
 
 

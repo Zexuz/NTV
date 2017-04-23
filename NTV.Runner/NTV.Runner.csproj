@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NTV.Core\NTV.Core.csproj">
+      <Project>{3F38F992-CF65-4DEF-92C4-20FAB2333A9C}</Project>
+      <Name>NTV.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NTV.Scraper\NTV.Scraper.csproj">
       <Project>{feb3f4c5-6df0-4f51-8fc3-a0ac55d870f0}</Project>
       <Name>NTV.Scraper</Name>

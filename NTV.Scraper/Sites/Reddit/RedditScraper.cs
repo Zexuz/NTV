@@ -95,9 +95,10 @@ namespace NTV.Scraper.Sites.Reddit
 
         private ResourceTypes GetResourceTypeFromChild(Child child)
         {
+            if (new Regex(@".+(gif|gifv)$").IsMatch(child.data.url)) return ResourceTypes.Gif;
+            if (new Regex(@".+(jpeg|jpg|png)$").IsMatch(child.data.url)) return ResourceTypes.Image;
             if(child.data.post_hint == "rich:video") return ResourceTypes.Video;
-            if(new Regex(@".+(jpeg|jpg|png)$").IsMatch(child.data.url)) return ResourceTypes.Image;
-            if(new Regex(@".+(gif|gifv)$").IsMatch(child.data.url)) return ResourceTypes.Gif;
+            if(child.data.post_hint.ToLower() == "image") return ResourceTypes.Image;
 
             throw new ArgumentException("Child is not a valid Resource type");
 

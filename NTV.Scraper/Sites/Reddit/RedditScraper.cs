@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using NTV.Core.Sites;
+using NTV.Core.Sites.Reddit;
 using NTV.Scraper.Extensions;
 
 namespace NTV.Scraper.Sites.Reddit
@@ -63,9 +65,9 @@ namespace NTV.Scraper.Sites.Reddit
         }
 
 
-        public new Enums.Sites GetType()
+        public new Core.Enums.Sites GetType()
         {
-            return Enums.Sites.Reddit;
+            return Core.Enums.Sites.Reddit;
         }
 
 
@@ -84,10 +86,21 @@ namespace NTV.Scraper.Sites.Reddit
                     UrlToSource = new Uri(child.data.url),
                     UrlToWebsite = new Uri($"{BaseUri.GetLeftPart(UriPartial.Authority)}{child.data.permalink}"),
                     Nsfw = child.data.over_18,
-                    Title = child.data.title
+                    Title = child.data.title,
+                    ResourceType = GetResourceTypeFromChild(child)
                 })
                 .Cast<IDankResource>()
                 .ToList();
+        }
+
+        private ResourceTypes GetResourceTypeFromChild(Child child)
+        {
+            if(child.data.post_hint == "rich:video") return ResourceTypes.Video;
+            if(new Regex(@".+(jpeg|jpg|png)$").IsMatch(child.data.url)) return ResourceTypes.Image;
+            if(new Regex(@".+(gif|gifv)$").IsMatch(child.data.url)) return ResourceTypes.Gif;
+
+            throw new ArgumentException("Child is not a valid Resource type");
+
         }
 
         private static DateTime UnixTimeStampToDateTime(int unixTimeStamp)

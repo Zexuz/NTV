@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NTV.WebApi.Controller")]
+[assembly: AssemblyTitle("NTV.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NTV.WebApi.Controller")]
+[assembly: AssemblyProduct("NTV.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ED12C3E4-FA53-4E0D-AB64-FA8C607401D2")]
+[assembly: Guid("3F38F992-CF65-4DEF-92C4-20FAB2333A9C")]
 
 // Version information for an assembly consists of the following four values:
 //

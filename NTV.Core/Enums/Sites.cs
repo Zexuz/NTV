@@ -1,4 +1,4 @@
-﻿namespace NTV.Scraper.Enums
+﻿namespace NTV.Core.Enums
 {
     public enum Sites
     {

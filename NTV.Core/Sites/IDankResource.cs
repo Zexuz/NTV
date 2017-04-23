@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NTV.Scraper.Sites
+namespace NTV.Core.Sites
 {
     public interface IDankResource
     {
@@ -11,5 +11,6 @@ namespace NTV.Scraper.Sites
         int NumberOfComments { get; set; }
         bool Nsfw { get; set; }
         string Title { get; set; }
+        ResourceTypes ResourceType { get; set; }
     }
 }

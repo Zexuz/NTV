@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.0.0
-MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV", "NTV.Test\NTV.Test.csproj", "{B93C068B-91C2-4A0A-9544-B4D71EEBABBB}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.Test", "NTV.Test\NTV.Test.csproj", "{B93C068B-91C2-4A0A-9544-B4D71EEBABBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV", "NTV.Scraper\NTV.Scraper.csproj", "{FEB3F4C5-6DF0-4F51-8FC3-A0AC55D870F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.Scraper", "NTV.Scraper\NTV.Scraper.csproj", "{FEB3F4C5-6DF0-4F51-8FC3-A0AC55D870F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV", "NTV.Runner\NTV.Runner.csproj", "{9E2B11B8-D9F9-4E54-8ADB-5AF21C4AAB7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.Runner", "NTV.Runner\NTV.Runner.csproj", "{9E2B11B8-D9F9-4E54-8ADB-5AF21C4AAB7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.Repository", "NTV.Repository\NTV.Repository.csproj", "{1119C1B6-AE00-42BB-97FC-81DEAA637F09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.WebApi.Controller", "NTV.WebApi.Controller\NTV.WebApi.Controller.csproj", "{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.Core", "NTV.Core\NTV.Core.csproj", "{3F38F992-CF65-4DEF-92C4-20FAB2333A9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTV.WebApi.Controller", "NTV.WebApi.Controller\NTV.WebApi.Controller.csproj", "{ED12C3E4-FA53-4E0D-AB64-FA8C607401D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +37,14 @@ Global
 		{1119C1B6-AE00-42BB-97FC-81DEAA637F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1119C1B6-AE00-42BB-97FC-81DEAA637F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1119C1B6-AE00-42BB-97FC-81DEAA637F09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C776AED-1B1B-4C38-8B3C-34A962CA20E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F38F992-CF65-4DEF-92C4-20FAB2333A9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F38F992-CF65-4DEF-92C4-20FAB2333A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F38F992-CF65-4DEF-92C4-20FAB2333A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F38F992-CF65-4DEF-92C4-20FAB2333A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED12C3E4-FA53-4E0D-AB64-FA8C607401D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED12C3E4-FA53-4E0D-AB64-FA8C607401D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED12C3E4-FA53-4E0D-AB64-FA8C607401D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED12C3E4-FA53-4E0D-AB64-FA8C607401D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

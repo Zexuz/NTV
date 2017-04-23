@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NTV.Scraper.Sites.Reddit
+namespace NTV.Core.Sites.Reddit
 {
     public class RedditResource:IDankResource
     {
@@ -11,5 +11,6 @@ namespace NTV.Scraper.Sites.Reddit
         public int NumberOfComments { get; set; }
         public bool Nsfw { get; set; }
         public string Title { get; set; }
+        public ResourceTypes ResourceType { get; set; }
     }
 }

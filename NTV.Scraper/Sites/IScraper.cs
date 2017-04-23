@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using NTV.Core.Sites;
 using NTV.Scraper.Sites.Reddit;
 
 namespace NTV.Scraper.Sites
@@ -11,6 +12,6 @@ namespace NTV.Scraper.Sites
         RateLimit RateLimit { get; }
         RedditNavigator Navigator { get; }
         Task<List<IDankResource>> GetResourcesFromSite();
-        Enums.Sites GetType();
+        Core.Enums.Sites GetType();
     }
 }

@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FEB3F4C5-6DF0-4F51-8FC3-A0AC55D870F0}</ProjectGuid>
+    <ProjectGuid>{3F38F992-CF65-4DEF-92C4-20FAB2333A9C}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NTV.Scraper</RootNamespace>
-    <AssemblyName>NTV.Scraper</AssemblyName>
+    <RootNamespace>NTV.Core</RootNamespace>
+    <AssemblyName>NTV.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,40 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RedditSharp, Version=1.1.12.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\RedditSharp.1.1.12\lib\Net45\RedditSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\UriExtension.cs" />
-    <Compile Include="HttpRequestExecutorService.cs" />
-    <Compile Include="IHttpRequestExecutor.cs" />
+    <Compile Include="Enums\ResourceTypes.cs" />
+    <Compile Include="Enums\Sites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ScraperService.cs" />
-    <Compile Include="Sites\Imgur\Imgur.cs" />
-    <Compile Include="Sites\IScraper.cs" />
-    <Compile Include="Sites\IUriNavigator.cs" />
-    <Compile Include="Sites\RateLimit.cs" />
-    <Compile Include="Sites\Reddit\RedditJsonObject.cs" />
-    <Compile Include="Sites\Reddit\RedditScraper.cs" />
-    <Compile Include="Sites\Reddit\RedditNavigator.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NTV.Core\NTV.Core.csproj">
-      <Project>{3f38f992-cf65-4def-92c4-20fab2333a9c}</Project>
-      <Name>NTV.Core</Name>
-    </ProjectReference>
+    <Compile Include="Sites\IDankResource.cs" />
+    <Compile Include="Sites\Reddit\RedditResource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

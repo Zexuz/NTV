@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using NTV.Core.Sites;
 using NTV.Scraper.Sites;
 using NTV.Scraper.Sites.Reddit;
 

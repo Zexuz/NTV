@@ -28,12 +28,6 @@ namespace NTV.Scraper.Sites.Reddit
 
         public async Task<List<IDankResource>> GetResourcesFromSite()
         {
-            //get a subredit
-            //start scrape the fist one
-            //check if we are maxing the Ratelimit.
-            //scrape next untill all is done.
-            //get new subredit
-
             var list = new List<IDankResource>();
             foreach (var path in PathsToScrape)
             {
@@ -64,7 +58,7 @@ namespace NTV.Scraper.Sites.Reddit
                 throw new HttpRequestException($"Can't get response from site:{response.Headers.Location.AbsoluteUri}");
             }
 
-            UpdateRateLimit(response);
+            UpdateRateLimit();
 
             var dataString = await response.Content.ReadAsStringAsync();
             return  ConvertDataString(dataString);
@@ -76,20 +70,9 @@ namespace NTV.Scraper.Sites.Reddit
             return Enums.Sites.Reddit;
         }
 
-        private void UpdateRateLimit(HttpResponseMessage response)
+        private void UpdateRateLimit()
         {
             RateLimit.RequestDone();
-            IEnumerable<string> rateLimitUsed;
-            if (response.Content.Headers.TryGetValues("x-ratelimit-used", out rateLimitUsed))
-            {
-                RateLimit.RequestUsed = int.Parse(rateLimitUsed.First());
-            }
-
-            IEnumerable<string> rateLimitTimeUnitlReset;
-            if (response.Content.Headers.TryGetValues("x-ratelimit-used", out rateLimitTimeUnitlReset))
-            {
-                RateLimit.DateWhenReset = DateTime.Now.AddSeconds(int.Parse(rateLimitTimeUnitlReset.First()));
-            }
         }
 
         private IEnumerable<IDankResource> ConvertDataString(string dataString)
@@ -123,8 +106,7 @@ namespace NTV.Scraper.Sites.Reddit
 
         private static bool ResourceMatchesCriteria(Child child)
         {
-
-            if (!child.data.stickied) return false;
+            if (child.data.stickied) return false;
             if (child.data.post_hint == "image" || child.data.post_hint == "rich:video") return true;
             if (new Regex(@".+(jpeg|jpg|gif|png|gifv)$").IsMatch(child.data.url)) return true;
 

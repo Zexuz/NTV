@@ -5,11 +5,11 @@ namespace NTV.Scraper.Sites
     public class RateLimit
     {
         private readonly TimeSpan _timer;
-        private DateTime _timeWhenStarted;
+        private readonly DateTime _timeWhenStarted;
 
         public int Remaining => NumberOfPosibleRequest - RequestUsed;
-        public int RequestUsed { get; set; }
-        public DateTime DateWhenReset { get; set; }
+        public int RequestUsed { get; private set; }
+        public DateTime DateWhenReset { get; private set; }
         public int NumberOfPosibleRequest { get; }
 
         public RateLimit(int numberOfPosibleRequest, TimeSpan timer)
